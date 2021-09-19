@@ -41,4 +41,12 @@ test('getting specific user ', async() => {
    console.log(response.body);
 });
 
+test.only('checking the toBeOneOf', async() => {
+    const response = await got('https://reqres.in/api/users/2');
+    let resp = JSON.parse(response.body);
+    console.log(resp.data.email);
+    //To verify that returned response contain one of the responses
+    expect(['michael.lawson@reqres.in','janet.weaver@reqres.in']).toContain(resp.data.email);
+});
+
 })
